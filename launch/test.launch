@@ -1,0 +1,6 @@
+<launch>
+    <rosparam command="load" file="$(find calibrate_odometry)/config/param.yaml" />
+    <node pkg="calibrate_odometry" name="calibrate_odometry" type="calibrate_odometry_node" output="screen">
+    </node>
+  </launch>
+  
