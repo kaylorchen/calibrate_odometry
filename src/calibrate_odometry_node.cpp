@@ -18,35 +18,35 @@ int main(int argc, char **argv) {
   geometry_msgs::Twist msg;
 
   for (size_t i = 0; i < 4; i++) {
-    // msg.linear.x = 0.2;
-    // msg.angular.z = 0;
-    // pub.publish(msg);
-    // ROS_INFO("Go straight");
-    // ros::Duration(5*5).sleep();
-    // count = 0;
-    // msg.linear.x = 0;
-    // msg.angular.z = 0;
-    // pub.publish(msg);
-    // pub.publish(msg);
-    // ROS_INFO("Exit");
-    // usleep(500 * 1000);
+    msg.linear.x = 0.2;
+    msg.angular.z = 0;
+    pub.publish(msg);
+    ROS_INFO("Go straight");
+    ros::Duration(5*1.3).sleep();
+    count = 0;
+    msg.linear.x = 0;
+    msg.angular.z = 0;
+    pub.publish(msg);
+    pub.publish(msg);
+    ROS_INFO("Exit");
+    usleep(500 * 1000);
     msg.linear.x = 0;
     msg.angular.z = direction * angular_degree / 180.0 * M_PI;
     ROS_INFO("90-degree turn, msg.angular.z = %lf", msg.angular.z);
     pub.publish(msg);
-    double delay = 360.0 / angular_degree;
+    double delay = 90.0 / angular_degree;
     ROS_INFO("Delay is %lf", delay);
     ros::Duration(delay).sleep();
+    // ros::Duration(38.37).sleep();
     count = 0;
     msg.linear.x = 0;
     msg.angular.z = 0;
-    for (size_t i = 0; i < 10; i++) {
+    for (int i = 0; i < 10; i++) {
       pub.publish(msg);
       ROS_INFO(" i = %d", i);;
     }
 
     // usleep(500 * 1000);
-    break;
   }
 
   return 0;
